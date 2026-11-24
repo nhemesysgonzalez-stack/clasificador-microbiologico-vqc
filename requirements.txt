@@ -1,0 +1,8 @@
+streamlit
+qiskit
+qiskit-aer
+scipy
+matplotlib
+pandas
+openpyxl
+scikit-learn
