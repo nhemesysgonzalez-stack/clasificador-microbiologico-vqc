@@ -64,7 +64,7 @@ def predecir_riesgo_lote(temp, ph, turbidez, horas):
     angulos = escalador_vqc.transform(df_in)
     params = np.concatenate([angulos.flatten(), pesos_entrenados])
     estimador = StatevectorEstimator()
-    val = float(estimador.run([(circuito_vqc, observable_vqc, params)]).result().data.evs)
+    val = float(next(iter(estimador.run([(circuito_vqc, observable_vqc, params)]).result())).data.evs)
     prob = round(((val + 1) / 2) * 100, 1)
     return max(0.0, min(100.0, prob))
 
@@ -125,7 +125,6 @@ if modo != "3. Subir Lotes en Lote (CSV / Excel)":
                 motivo = "Los parámetros físico-químicos mantienen inhibido el crecimiento bacteriano esperado."
             st.info(f"💡 **Interpretación técnica:** {motivo}")
 
-            # Gráfica clara de medidor de riesgo
             fig, ax = plt.subplots(figsize=(8, 2.2))
             color_barra = '#d62728' if riesgo >= 50.0 else '#2ca02c'
             ax.barh([nombre_lote], [riesgo], color=color_barra, height=0.4)
@@ -183,3 +182,15 @@ else:
                 
             df_res = pd.DataFrame(resultados).sort_values(by="Riesgo_Cuantico_Pct", ascending=False)
             st.success("✅ Triaje cuántico completado. Lotes ordenados por urgencia microbiológica:")
+            st.dataframe(df_res, use_container_width=True)
+st.divider()
+st.subheader("💬 Validación en Chip Real IBM y Colaboraciones")
+col_c1, col_c2 = st.columns(2)
+with col_c1:
+if st.button("👍 ¡Esta herramienta me ha resultado útil!"):
+st.toast("¡Gracias por tu valoración! Seguimos innovando en calidad y biotecnología.")
+with col_c2:
+st.markdown("¿Deseas validar este clasificador en hardware cuántico real de IBM Quantum o adaptarlo a tu laboratorio?")
+st.markdown("📩 **Correo directo:** [nhemesysgonzalez@gmail.com](mailto:nhemesysgonzalez@gmail.com) | 💬 **[Comentarios en GitHub](https://github.com/nhemesysgonzalez-stack/clasificador-microbiologico-vqc/issues)**")
+
+
