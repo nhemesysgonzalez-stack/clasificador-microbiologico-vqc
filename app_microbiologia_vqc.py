@@ -187,10 +187,10 @@ st.divider()
 st.subheader("💬 Validación en Chip Real IBM y Colaboraciones")
 col_c1, col_c2 = st.columns(2)
 with col_c1:
-if st.button("👍 ¡Esta herramienta me ha resultado útil!"):
-st.toast("¡Gracias por tu valoración! Seguimos innovando en calidad y biotecnología.")
+    if st.button("👍 ¡Esta herramienta me ha resultado útil!"):
+        st.toast("¡Gracias por tu valoración! Seguimos innovando en calidad y biotecnología.")
 with col_c2:
-st.markdown("¿Deseas validar este clasificador en hardware cuántico real de IBM Quantum o adaptarlo a tu laboratorio?")
-st.markdown("📩 **Correo directo:** [nhemesysgonzalez@gmail.com](mailto:nhemesysgonzalez@gmail.com) | 💬 **[Comentarios en GitHub](https://github.com/nhemesysgonzalez-stack/clasificador-microbiologico-vqc/issues)**")
+    st.markdown("¿Deseas validar este clasificador en hardware cuántico real de **IBM Quantum** o adaptarlo a tu laboratorio?")
+    st.markdown("📩 **Correo directo:** [nhemesysgonzalez@gmail.com](mailto:nhemesysgonzalez@gmail.com) | 💬 **[Comentarios en GitHub](https://github.com/nhemesysgonzalez-stack/clasificador-microbiologico-vqc/issues)**")
 
 
